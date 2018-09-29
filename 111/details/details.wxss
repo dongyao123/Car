@@ -1,0 +1,570 @@
+@import "/pages/index/index.wxss";
+
+ec-canvas {
+  position:absolute;  
+  left:0;
+  top:0;  
+  bottom:0;
+  right:0;  
+  width: 100%;
+  height: 100%;
+}    
+.nei {
+ position: relative;
+  width:700rpx;
+  height:600rpx;
+  padding-left:150rpx;
+}
+.canvasParent{
+    position: relative;
+    width:700rpx;
+    height:600rpx; 
+}
+
+
+
+.info {
+  background: #ffb846;
+  color: #fff;
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 49rpx;
+  height: 260rpx;
+}
+
+.fon view:nth-child(1) {
+  width: 100%;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #333;
+  font-size: 24rpx;
+}
+
+.weibo {
+  width: 100%;
+  height: 60rpx;
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  background: #f7f7f7;
+  color: #000;
+}
+
+.weibo>text {
+  margin-left: 62rpx;
+}
+
+.paipian {
+  color: #000;
+}
+
+.weibo1 {
+  display: flex;
+  justify-content: space-between;
+  width: 198rpx;
+}
+
+.text_3 {
+  font-size: 25rpx;
+}
+
+.infogg {
+  width: 150rpx;
+  height: 210rpx;
+  margin-right: 74rpx;
+}
+
+.info image {
+  width: 150rpx;
+  height: 210rpx;
+  margin-right: 72rpx;
+}
+
+.info .info_text .text_2 {
+  font-size: 25rpx;
+}
+
+/* 导航 */
+
+.parent::-webkit-scrollbar {
+  display: none;
+}
+
+.parent {
+  width: 100%;
+  height: 70rpx;
+  overflow-x: scroll;
+  border-bottom: 2px solid #eee;
+  border-radius: 20rpx;
+}
+
+.nav {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  font-size: 26rpx;
+  justify-content: space-between;
+  padding: 0 20rpx;
+}
+
+.nav view {
+  height: 41rpx;
+}
+
+.active {
+  border-bottom: 6rpx solid #ffd846;
+  margin-top: 10rpx;
+}
+
+.show {
+  margin-bottom: 150rpx;
+  padding-top: 25rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  /* position: absolute; */
+}
+
+.hidden {
+  display: none;
+  text-align: center;
+  line-height: 200px;
+}
+
+.padding {
+  padding: 0 20rpx;
+}
+
+.chart_title {
+  margin-top: 44rpx;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+}
+
+.chart_title view {
+  float: right;
+}
+
+/* 微信 */
+
+.wx_new {
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+  background: #f5f5f5;
+  padding-left: 20rpx;
+  padding-right: 307rpx;
+  color: #c30505;
+  font-size: 18rpx;
+}
+
+.wx_new text:nth-child(2n) {
+  color: #282828;
+}
+
+.canvas {
+  width: 700rpx;
+  height: 600rpx;
+  z-index: 1000;
+  margin: 0 auto;
+}
+
+.men_juzhong {
+  text-align: center;
+  display: inline-block;
+}
+
+/* 档期与类型按钮 */
+
+.btn {
+  width: 285rpx;
+  padding: 20rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn view {
+  display: inline-block;
+  width: 135rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #ffb846;
+  font-size: 24rpx;
+  border: 1px solid #ffb846;
+  border-radius: 15rpx;
+  margin: 0 10rpx;
+}
+
+.btn view:nth-child(2) {
+  background: #ffb846;
+  color: #fff;
+  margin-left: 5rpx;
+}
+
+.info image {
+  width: 150rpx;
+  height: 210rpx;
+  margin-right: 62rpx;
+}
+
+.info .info_text .text_1 {
+  font-size: 30rpx;
+  width: 100%;
+  margin-bottom: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info .info_text .text_2 {
+  font-size: 30rpx;
+}
+
+/* 导航 */
+
+swiper {
+  height: 4200rpx;
+}
+
+.contain {
+  /* width: 100%; */
+  margin-bottom: 230rpx;
+}
+
+.tab {
+  width: 100%;
+  z-index: 100;
+  white-space: nowrap;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-bottom: 2px solid #eee;
+  border-radius: 20rpx;
+  padding-bottom: 9rpx;
+}
+
+.tab-item {
+  display: inline-block;
+  width: 20%;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.content {
+  padding-top: 25rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+}
+
+/* .content-item{
+ overflow-y: scroll
+} */
+
+.activeline {
+  width: 60rpx;
+  height: 6rpx;
+  background-color: #fff;
+  display: block;
+  margin: 0 auto;
+}
+
+.padding {
+  padding: 0 20rpx;
+}
+
+/* 想看 */
+
+.xk_hd {
+  margin: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.xk_hd .hd_title {
+  flex-wrap: wrap;
+  width: 210rpx;
+  text-align: center;
+}
+
+.xk_hd .hd_title>view {
+  margin-bottom: 42rpx;
+}
+
+.xk_hd .hd_title>text {
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.xk_hd .hd_title>image {
+  width: 19rpx;
+  height: 32rpx;
+  margin-right: 6rpx;
+}
+
+.chart_title {
+  font-size: 26rpx;
+  background: #f7f7f7;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+.chart_title view {
+  float: right;
+}
+
+.city_title view {
+  width: 142rpx;
+  color: #7e7e7e;
+  float: right;
+  display: flex;
+}
+
+.city_title image {
+  width: 17rpx;
+  height: 30rpx;
+  margin-top: 1rpx;
+  margin-left: 22rpx;
+}
+
+/* 评分 */
+
+.pf_hd1 {
+  padding: 20rpx 20rpx 0;
+}
+
+.pf_hd {
+  padding: 20rpx 20rpx 0;
+  border-top: 17rpx solid #f2f2f2;
+  border-bottom: 17rpx solid #f2f2f2;
+}
+
+.pf_title:first-child {
+  margin-top: 35rpx;
+}
+
+.pf_title view {
+  font-size: 25rpx;
+  font-weight: bold;
+}
+
+.pf_title text {
+  display: block;
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.similar .similar_content_text {
+  width: 209rpx;
+  padding-top: 65rpx;
+}
+
+.similar .similar_content text {
+  width: 170rpx;
+  margin-top: 24rpx;
+}
+
+.similar .similar_content view {
+  margin: 20rpx 0;
+}
+
+.similar .similar_content image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-bottom: 18rpx;
+}
+
+.similar .similar_content text {
+  display: block;
+}
+
+/* .similar .similar_title{
+  margin:39rpx 86rpx 33rpx;
+} */
+
+.similar .similar_content {
+  display: flex;
+}
+
+.city {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.city text {
+  display: inline-block;
+  width: 124rpx;
+  height: 69rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 71rpx;
+  border: 1px solid #cdcdcd;
+  border-radius: 10rpx;
+  margin-top: 29rpx;
+  margin-right: 67rpx;
+}
+
+.city text:nth-child(4), .city text:nth-child(8) {
+  margin-right: 0;
+}
+
+.progress {
+  display: flex;
+  margin-top: 29rpx;
+}
+
+.bar {
+  margin-left: 73rpx;
+}
+
+.bar text {
+  width: 95rpx;
+}
+
+.age_kuai view {
+  width: 15rpx;
+  height: 15rpx;
+  margin-top: 10rpx;
+  margin-right: 15rpx;
+}
+
+.age_kuai {
+  display: flex;
+  margin-top: 20rpx;
+  justify-content: center;
+}
+
+.age_kuai view:first-child {
+  background: #ffd846;
+}
+
+.age_kuai view:nth-child(3) {
+  background: #ff7646;
+}
+
+.weixin {
+  width: 100%;
+  height: 68rpx;
+  background: #fff;
+  font-size: 26rpx;
+  margin: 10rpx 0;
+}
+
+.footter {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.topweixin {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f0f0f0;
+}
+
+.topweixin:nth-child(1) {
+  height: 78rpx;
+}
+
+.topweixin1 {
+  height: 65rpx;
+}
+
+.topweixin view:nth-child(1) {
+  width: 57rpx;
+  height: 100%;
+}
+
+.topweixin view {
+  width: 233rpx;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  color: #000;
+  background: #f0f0f0;
+  border: 1rpx solid #ffff;
+  box-sizing: border-box;
+}
+
+.info_text {
+  width: 100%;
+  color: #000;
+  padding: 69rpx 0 28rpx 0;
+}
+
+.jianxu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.jianxu text:nth-child(1) {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-left:57rpx;
+  width:58rpx;
+}
+
+.tect_1 {
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+
+.tect_1 image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+}
+
+.xiao {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-left: 11rpx;
+}
+
+.xiao image {
+  width: 16rpx;
+  height: 28rpx;
+}
+
+.xiao text {
+  height: 29rpx;
+  align-items: flex-start;
+  color: #6666;
+  font-size: 27rpx;
+}
+
+.shipiao {
+  font-size: 30rpx;
+  margin-left: 64rpx;
+  font-weight: bold;
+}
+
+.hd_title:nth-child(3) text {
+  font-size: 26rpx;
+  display: inline-block;
+  margin-top: 13rpx;
+}
+
+.paipian view {
+  width: 46%;
+  text-align: right;
+}

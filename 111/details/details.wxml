@@ -1,0 +1,720 @@
+<view class="info">
+  <view class="infogg">
+    <image src='{{xiang.img}}'></image>
+  </view>
+  <view class='info_text'>
+    <view class='text_1'>
+      <text>{{xiang.name}}</text>
+      <text class='shipiao' hidden='{{xiang.piaofang==null}}'>预测票房{{xiang.piaofang}}</text>
+    </view>
+    <view class='text_2'>
+      <text>导演{{xiang.daoyan==null? '':xiang.daoyan}}</text>
+    </view>   
+    <view class='text_3'>
+      <text>{{xiang.inland_time}}上映</text>
+    </view>
+  </view>
+</view>  
+<view class="body">
+  <view class="nav_swiper" style='background-image:url("http://ysimg.liuguanglei.zaiyoudao.com/img/1.png")'>
+    <scroll-view class="men" scroll-x scroll-with-animation="true" scroll-left="{{srollto}}">
+      <view class="switcher" bindtap="selected" wx:for="{{name}}" data-idnex="{{index}}">
+        <view class='men_juzhong'>
+          {{item.name}} 
+          <view class="{{current==index? 'xian':''}}"></view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+
+  <!-- 微博 -->
+  <view class="{{selected==0?'show':'hidden'}}">
+    <!-- 上映 -->
+    <view class='xk_hd'>
+      <view class='hd_title'>
+        <view>排名</view>
+        <view class='jianxu'>
+          <text>{{weib_top.paim}}</text>
+          <view class='xiao'>
+            <image src='{{weib_top.p_sratus==1?"/img/jiantou.png":""}}'></image>
+            <text>{{weib_top.paim}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='hd_title'>
+        <view>互动量</view>
+        <text>{{weib_top.hdnum}}</text>
+      </view>
+      <view class='hd_title'>
+        <view>日环比</view>
+        <image src='{{weib_top.d_sratus==1?"/img/jiantou.png":""}}'></image>
+        <text>{{weib_top.dayper}}</text>
+      </view>
+    </view>
+
+    <!-- 下映 -->
+    <view class='xk_hd' style="display:none;">
+      <view class='hd_title'>
+        <view>互动量</view>
+        <text>1</text>
+      </view>
+      <view class='hd_title'>
+        <view>热门微博量</view>
+        <text>609322</text>
+      </view>
+      <view class='hd_title'>
+        <view>话题量</view>
+        <text>6022</text>
+      </view>
+    </view>
+    <view>
+      <view class='chart_title' style="padding:0 30rpx;">微博话题讨论榜</view>
+      <view class='weibo'>
+        <text>话题</text>
+        <view class='weibo1'>
+          <text>讨论量</text>
+          <text>阅读量</text>
+        </view>
+      </view>
+      <scroll-view scroll-y="{{true}}" style="height:{{_height}}px">
+        <view class="footer_con pinfen" data-index="index" wx:for="{{weib_pai}}" bindtap="TiaoHu" :key="index">   
+          <view class="footer_rright">
+            <view class="shurzi" style="justify-content:flex-start">
+              <view class="footnc" style="background:{{yanse[index]}};{{index<=2?'color:#fff':'color:#ccc'}}">{{index+1}}</view>
+              <view class="fon" style='display:flex;  align-items:center;'>
+                <view>{{item.name}}</view>
+              </view>
+            </view>
+            <view class="paipian" style="width:37%;">
+              <view>{{item.pnum}}</view>
+              <view>{{item.znum}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+      <view class='tect_1' bindtap="FenGxi">
+        查看更多({{weib_pai.length}}条)
+        <image src='/img/xai.png'></image>
+      </view>
+    </view>
+    <view class='padding'>
+
+      <view>
+        <view class='chart_title'>热门微博</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+        <view class='nei'>
+        <ec-canvas class="canvas" id="weibo1" canvas-id="weibo1" disable-scroll="true"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>转发数</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+        <view class='nei'>
+        <ec-canvas class="canvas" id="weibo2" canvas-id="weibo2" disable-scroll="true"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>评论数趋势</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+        <view class='nei'>
+        <ec-canvas class="canvas" id="weibo3" canvas-id="weibo3" disable-scroll="true"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>点赞量</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+        <view class='nei'>
+        <ec-canvas class="canvas" id="weibo4" canvas-id="weibo4" disable-scroll="true"></ec-canvas>
+        </view>
+      </view>
+    </view>
+  </view>   
+  <!-- 物科传播 -->
+  <view class="{{selected==1?'show':'hidden'}}">
+    <view class='xk_hd'>
+      <view class='hd_title'>
+        <view>排名</view>
+        <view class='jianxu'>
+          <text>{{wuliao.wlnum}}</text>
+          <view class='xiao'>
+            <image src='{{wuliao.p_sratus==1?"/img/jiantou.png":"/img/jiantou.png"}}'></image>
+            <text>{{wuliao.wlnum}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='hd_title'>
+        <view>互动量</view>
+        <text>{{wuliao.zbnum}}</text>
+      </view>
+      <view class='hd_title'>
+        <view>日环比</view>
+        <image src='/img/jiantou.png'></image>
+        <text>{{wuliao.zpnum}}</text>
+      </view>
+    </view>
+
+    <view class='xk_hd' style='display:none;'>
+      <view class='hd_title'>
+        <view>物料条数</view>
+        <text>1</text>
+      </view>  
+      <view class='hd_title'>
+        <view>总播放量</view>
+        <text>609322</text>
+      </view>
+      <view class='hd_title'>
+        <view>最高播放</view>
+        <text id='text_con' style='font-size:27rpx;'>腾讯视频</text>
+      </view>
+    </view>
+
+    <view class='padding'>
+      <view> 
+        <view class='chart_title'>每日播放量</view>
+        <view class='btn'>    
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>   
+        <view class='nei'>
+            <ec-canvas class="canvas" id="wk1" canvas-id="wk1"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>总播放量</view>
+         <view class='nei'>
+            <ec-canvas class="canvas" id="wk2" canvas-id="wk2"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>总评论量</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>    
+         <view class='nei'>
+            <ec-canvas class="canvas" id="wk3" canvas-id="wk3"></ec-canvas>
+        </view>
+      </view>
+    </view>
+    <view>   
+      <view class='chart_title' style="padding:0 30rpx;">物料播放排名</view>
+      <view class='weibo'>
+        <text>文章</text>
+        <view class='weibo1'>
+          <text>阅读量</text>
+          <text>点赞数</text>
+        </view>
+      </view>
+      <scroll-view scroll-y="{{true}}">
+        <view class="footer_con pinfen" data-index="index" wx:for-items="{{[1,3,4]}}" bindtap="TiaoHu">
+          <view class="footer_rright">
+            <view class="shurzi" style="justify-content:flex-start">
+              <view class="footnc" style="background:{{yanse[index]}};{{index<=2?'color:#fff':'color:#ccc'}}">{{index+1}}</view>
+              <view class="fon" style='display:flex;  align-items:center;'>
+                <view>大魔王</view>
+              </view>
+            </view>
+            <view class="paipian" style="width:37%;">
+              <view>20万+</view>
+              <view>{{29}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='tect_1'>
+      查看更多(291条)
+      <image src='/img/xai.png'></image>
+    </view>
+  </view>
+  <!-- 热度 -->
+  <view class="{{selected==2?'show':'hidden'}}">
+    <!--        
+			进入页面为热映榜 为隐藏
+		 -->
+    <view class='xk_hd'>
+      <view class='hd_title'>
+        <view>排名</view>
+        <text>1</text>
+      </view>
+      <view class='hd_title'>
+        <view>Filmath lndex</view>
+        <text>609322</text>
+      </view>
+      <view class='hd_title'>
+        <view>日环比</view>
+        <image src='/img/jiantou.png'></image>
+        <text>60.0%</text>
+      </view>
+    </view>  
+    <view class='padding'>
+      <view>
+        <view class='chart_title'>Filmath lndex</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view> 
+        <view class='nei'>
+        <ec-canvas id="redu1" class='canvas'  canvas-id="redu1" data-echar=""></ec-canvas>
+        </view> 
+      </view> 
+      <view>    
+        <view class='chart_title'>百度指数</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view> 
+        <view class='nei'>
+            <ec-canvas  id="redu2" canvas-id="redu2" ></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>微信指数</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+        <view class='nei'>
+           <ec-canvas id='redu3' canvas-id="redu3" ></ec-canvas>
+        </view>
+      </view>   
+      <view>   
+        <view class='chart_title'>微博指数</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>    
+        
+         <view class='canvasParent'>  
+            <view class="nei">    
+              <ec-canvas id="redu4" canvas-id="redu4" ></ec-canvas>   
+            </view>   
+          </view>    
+
+      </view>
+      <view>  
+        <view class='chart_title'>360指数</view>
+        <view class='btn'>   
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>  
+        <view class='nei'>
+            <ec-canvas class="canvas" id="redu5" canvas-id="redu5"></ec-canvas>
+        </view>
+      </view>
+      <view>   
+        <view class='chart_title'>百度新闻量</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view> 
+        <view class='nei'>
+          <ec-canvas class="canvas" id="redu6" canvas-id="redu6"></ec-canvas>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 微信 -->
+  <view class="{{selected==3?'show':'hidden'}}">
+    <view class='xk_hd'>
+      <view class='hd_title'>
+        <view>排名</view>
+        <text>1</text>
+      </view>
+      <view class='hd_title'>
+        <view>阅读量</view>
+        <text>609322</text>
+      </view>
+      <view class='hd_title'>
+        <view>日环比</view>
+        <image src='/img/jiantou.png'></image>
+        <text>60.0%</text>
+      </view>
+    </view>
+    <view>
+      <view class='chart_title' style="padding:0 30rpx;">热门文章</view>
+      <view class='weibo'>
+        <text>文章</text>
+        <view class='weibo1'>
+          <text>阅读量</text>
+          <text>点赞数</text>
+        </view>
+      </view>
+      <scroll-view scroll-y="{{true}}">
+        <view class="footer_con pinfen" data-index="index" wx:for-items="{{[1,3,4]}}" bindtap="TiaoHu" wx:for="{{weib_pai}}">
+          <view class="footer_rright">
+            <view class="shurzi" style="justify-content:flex-start">
+              <view class="footnc" style="background:{{yanse[index]}};{{index<=2?'color:#fff':'color:#ccc'}}">{{index+1}}</view>
+              <view class="fon" style='display:flex;  align-items:center;'>
+                <view>{{item.name}}</view>
+              </view>
+            </view>
+            <view class="paipian" style="width:37%;">
+              <view>{{item.pnum}}</view>
+              <view>{{item.znum}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='tect_1'>
+      查看更多({{weib_pai.length-7}}条)
+      <image src='/img/xai.png'></image>
+    </view>
+    <view class='padding'>
+      <!-- 微信文章 -->
+      <view>
+        <view class='chart_title'>文章趋势</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>  
+        <view class='nei'>
+            <ec-canvas class="canvas" id='wx1' canvas-id="wx1"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>阅读量趋势</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+       <view class='nei'>
+            <ec-canvas class="canvas" id='wx2' canvas-id="wx2"></ec-canvas>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 想看 -->
+  <view class="{{selected==4?'show':'hidden'}}">
+    <!-- 热映榜 为猫眼想看人数-->
+    <view hidden='!{{DaiShang}}' class='xk_hd' wx:if="{{!shang}}">
+      <view class='hd_title'>
+        <view>猫眼想看人数</view>
+        <text>1</text>
+      </view> 
+      <view class='hd_title'>
+        <view>淘票票想看人数</view>
+        <text>609322</text>
+      </view>
+    </view> 
+
+
+    <view class='xk_hd'>
+      <view class='hd_title'>
+        <view>排名</view>
+        <text>1</text>
+      </view>
+      <view class='hd_title'>
+        <view>想看日增人数</view>
+        <text>609322</text>
+      </view>
+      <view class='hd_title'>
+        <view>日环比</view>
+        <image src='/img/jiantou.png'></image>
+        <text>60.0%</text>
+      </view>
+    </view>
+    <view class='padding'>
+      <view>
+        <view class='chart_title'>猫眼增长趋势</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+        <view class='nei'>
+           <ec-canvas class="canvas" id='xk_1' canvas-id="xk_1"></ec-canvas>
+        </view>      
+      </view>
+      <view>
+        <view class='chart_title'>淘票票增长趋势</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+        <view class='nei'>
+           <ec-canvas class="canvas" id='xk_2' canvas-id="xk_2"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>性别占比</view>
+        <view class='bar'>
+          <view class='progress'>
+            <text>男</text>
+            <progress style='width:500rpx' percent="25" stroke-width="16" activeColor="#ff7646" backgroundColor="#ffd846"
+              show-info />
+          </view>
+          <view class='progress'>
+            <text>女</text>
+            <progress style='width:500rpx' percent="75" stroke-width="16" activeColor="#ffd846" backgroundColor="#ff7646"
+              show-info />
+          </view>  
+          <view class='age_kuai'>
+            <view></view>
+            <text>男</text>
+            <view></view>
+            <text>女</text>
+          </view>
+        </view>
+      </view>
+      <view>   
+        <view class='chart_title'>年龄占比</view>
+       <view class='nei'> 
+           <ec-canvas class="canvas" id='xk_4' canvas-id="xk_4"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>地域占比</view>
+        <view class='nei'>  
+           <ec-canvas class="canvas" id='xk_5' canvas-id="xk_5"></ec-canvas>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 票房 -->
+  <view class="{{selected==5?'show':'hidden'}}">
+
+    <view hidden='!{{DaiShang}}' class='xk_hd'>
+      <view class='hd_title'>
+        <view>年度排名</view>
+        <text>3</text>
+      </view>
+      <view class='hd_title'>
+        <view>分账票房</view>
+        <text>609322</text>
+      </view>
+      <view class='hd_title'>
+        <view>综合票房</view>
+        <text>60亿</text>
+      </view>
+    </view>
+    <view class='xk_hd'>
+      <view class='hd_title'>
+        <view>排名</view>
+        <text>1</text>
+      </view>
+      <view class='hd_title'>
+        <view>昨日票房</view>
+        <text>609322</text>
+      </view>
+      <view class='hd_title'>
+        <view>日环比</view>
+        <image src='/img/jiantou.png'></image>
+        <text>60.0%</text>
+      </view>
+    </view>
+    <view class='padding'>
+      <view>   
+        <view class='chart_title'>单日票房趋势</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view> 
+        <view class='nei'>
+            <ec-canvas class="canvas" id="pf_1" canvas-id="pf_1"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>累计票房趋势</view>
+        <view class='btn'>     
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+         <view class='nei'>
+            <ec-canvas class="canvas" id="pf_2" canvas-id="pf_2"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>日排片占比图</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+         <view class='nei'>
+            <ec-canvas class="canvas" id="pf_3" canvas-id="pf_3"></ec-canvas>
+        </view>
+      </view>
+      <view>  
+        <view class='chart_title'>日场次趋势</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+         <view class='nei'>
+            <ec-canvas class="canvas" id="pf_4" canvas-id="pf_4"></ec-canvas>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 预售 --> 
+  <view class="{{selected==6?'show':'hidden'}}">
+    <view hidden='{{!DaiShang}}' class='xk_hd'>
+      <view class='hd_title'>
+        <view>排名</view>
+        <text>1</text>
+      </view>
+      <view class='hd_title'>
+        <view>预售票房</view>
+        <text>609322</text>
+      </view>
+      <view class='hd_title'>
+        <view>日增</view>
+        <image src='/img/jiantou.png'></image>
+        <text>60.0%</text>
+      </view>
+    </view>
+
+    <!-- 预售 榜  为上映显示 预售榜的区域 -->
+
+    <view class='xk_hd'>
+      <view class='hd_title'>
+        <view>预售票房</view>
+        <text>1</text>
+      </view>
+      <view class='hd_title'>
+        <view>预售排片占比</view>
+        <text>609322</text>
+      </view>
+      <view class='hd_title'>
+        <view>预售排片占比</view>
+        <image src='/img/jiantou.png'></image>
+        <text>60.0%</text>
+      </view>
+    </view>
+    <view class='padding'>
+      <view>
+        <view class='chart_title'>预售趋势</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>    
+        <view class='nei'>
+            <ec-canvas class="canvas" id="ys_1" canvas-id="ys_1"></ec-canvas>
+        </view> 
+      </view>
+
+      <view>
+        <view class='chart_title'>开放排片趋势</view>
+        <view class='btn'>
+          <view>同档期</view>
+          <view>同类型</view>
+        </view>
+        <view class='nei'>
+            <ec-canvas class="canvas" id="ys_2" canvas-id="ys_2"></ec-canvas>
+        </view>
+      </view>
+    </view>
+  </view> 
+  <!-- 评分 -->   
+  <view class="{{selected==7?'show':'hidden'}}">
+    <view class='pf_hd1'>
+      <view class='similar'>
+        <view>本案评分</view>
+        <view class='similar_content'>
+          <view class='similar_content_text'>
+            <text>初始评分</text>
+            <text>当前评分</text>
+            <text>评分人数</text>
+            <text>评分人数环比</text>
+          </view>
+          <view>
+            <image src='/img/icon_3.png'></image>
+            <text wx:for="{{pinFei_top.doub}}" hidden="{{index==item.name}}">{{item}}</text>
+          </view>
+          <view>    
+            <image src='/img/icon_1.png'></image>
+            <text wx:for="{{pinFei_top.maoy}}">{{item}}</text>
+          </view>
+          <view>
+            <image src='/img/icon_2.png'></image>
+            <text wx:for="{{pinFei_top.taopp}}">{{item==null?'0':item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='pf_hd'>
+      <view class='similar'>
+        <view>同类型电影</view>
+        <view class='similar_content'>
+          <view class='similar_content_text' style=''>
+            <text>{{tongLei[0].name}}</text>
+            <text>{{tongLei[1].name}}</text>
+            <text>{{tongLei[2].name}}</text>
+          </view>
+          <view>
+            <image src='/img/icon_3.png'></image>
+            <text wx:for="{{tongLei[0]}}">{{item}}</text>
+          </view>
+          <view>
+            <image src='/img/icon_1.png'></image>
+            <text wx:for="{{tongLei[1]}}">{{item}}</text>
+          </view>
+          <view>
+            <image src='/img/icon_2.png'></image>
+            <text wx:for="{{tongLei[2]}}" wx:if="{{index==item.name}}">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='padding'>
+      <view>
+        <view class='chart_title'>评价占比</view>
+       <view class='nei'> 
+            <ec-canvas class="canvas" id='score_1' canvas-id="score_1"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>性别占比</view>
+        <view class='bar'>
+          <view class='progress'>
+            <text>豆瓣</text>
+            <progress style='width:500rpx' percent="30" stroke-width="16" activeColor="#ffd846" backgroundColor="#ff7646"
+              show-info />
+          </view>
+          <view class='progress'>
+            <text>猫眼</text>
+            <progress style='width:500rpx' text-inside percent="80" stroke-width="16" activeColor="#ffd846" 
+              backgroundColor="#ff7646" show-info />
+          </view>
+          <view class='progress'>
+            <text>淘票票</text>
+            <progress style='width:500rpx' percent="40" stroke-width="16" activeColor="#ffd846" backgroundColor="#ff7646"
+              show-info />
+          </view>
+          <view class='age_kuai'>
+            <view></view>
+            <text>男</text>
+            <view></view>
+            <text>女</text>
+          </view>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>年龄占比</view>
+        <view class='nei'> 
+            <ec-canvas class="canvas" id='score_3' canvas-id="score_3"></ec-canvas>
+        </view>
+      </view>
+      <view>
+        <view class='chart_title'>地域占比</view>
+       <view class='nei'> 
+            <ec-canvas class="canvas" id='score_4' canvas-id="score_4"></ec-canvas>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
